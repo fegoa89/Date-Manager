@@ -44,7 +44,7 @@ class DateParser
     end
   end
 
-  def has_correct_structure?(date, regex)
+  def has_correct_structure?(regex)
     @start_date =~ regex && @start_date =~ regex
   end
 
