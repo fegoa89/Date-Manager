@@ -10,7 +10,6 @@ class DateParser
   OTHER_COMPONENT_SEPARATOR = {'.' => '/', '-' => '/'}
   DATE_FORMAT               = ['MDY', 'DMY', 'YMD']
 
-  # TODO date format hash with structure {format: 'MDY , structure: '%m/%d/%Y' }
   def initialize(start_date, finish_date, format)
     @format      = get_format(format)
     @start_date  = start_date
@@ -26,18 +25,23 @@ class DateParser
   private
 
   def valid_country_format_date?
+    # Check if the format given is included into the date formats we can handle
     DATE_FORMAT.include?(@format)
   end
 
   def get_format(format)
+    # If there is no format present, automatically assigns 'YMD' date format
     format.nil? ? 'YMD' : format.upcase
   end
 
   def has_correct_structure?(regex)
+    # Compares the string given for both dates with the regex expresion for
+    # this date format
     @start_date =~ regex && @start_date =~ regex
   end
 
   def parse_date
+    # Validates and convert the string based on the date format
     case @format
       when 'MDY'
         validate_string(date_format_structure[:mdy])
@@ -49,6 +53,9 @@ class DateParser
   end
 
   def validate_string(date_format)
+    # If the structure of the string coincides with the regex expression for this date format
+    # then it cleans the string if it contains the dates separated with '.' or '-'
+    # and convert it to an Date object
     if has_correct_structure?(date_format[:regex])
       clean_date_separator
       convert_to_date_object(date_format[:structure])
@@ -60,6 +67,10 @@ class DateParser
   end
 
   def date_format_structure
+    # Hash that contains the structure that this date format has (m - Month, d - Day, Y - Year)
+    # for be parsed to a valid Date object.
+    # Contains the regular expression for compare the exact position of the day, month
+    # and year, depending on the date format
     {
       mdy: { structure: '%m/%d/%Y', regex: /^\d{2}(-|.|\/)\d{2}(-|.|\/)\d{4}$/ },
       dmy: { structure: '%d/%m/%Y', regex: /^\d{2}(-|.|\/)\d{2}(-|.|\/)\d{4}$/ },
@@ -68,6 +79,7 @@ class DateParser
   end
 
   def convert_to_date_object(structure)
+    # Returns two Date objects
     [ Date.strptime(@start_date, structure), Date.strptime(@finish_date, structure) ]
   end
 
