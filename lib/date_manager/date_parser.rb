@@ -5,12 +5,12 @@ class DateParser
   # DMY -> dd/mm/yyyy  Date.strptime("15/6/2012", '%d/%m/%Y') - ^\d{2}(-|.|\/)\d{2}(-|.|\/)\d{4}$
   # YMD -> yyyy/mm/dd  Date.strptime("2012/6/15", '%Y/%m/%d') - ^\d{4}(-|.|\/)\d{2}(-|.|\/)\d{2}$ with seconds '^\d{4}(-|.|\/)\d{2}(-|.|\/)\d{2} \d{2}:\d{2}:\d{2}$/', '2008-09-01 12:35:45'
   # DateParser.new('02/02/2012','02/02/2013', 'DMY')
-  attr_accessor :start_date, :finish_date
+  attr_accessor :start_date, :finish_date, :format
 
   OTHER_COMPONENT_SEPARATOR = {'.' => '/', '-' => '/'}
   DATE_FORMAT               = ['MDY', 'DMY', 'YMD']
 
-  def initialize(start_date, finish_date, format)
+  def initialize(start_date, finish_date, format = '')
     @format      = get_format(format)
     @start_date  = start_date
     @finish_date = finish_date
@@ -31,7 +31,11 @@ class DateParser
 
   def get_format(format)
     # If there is no format present, automatically assigns 'YMD' date format
-    format.nil? ? 'YMD' : format.upcase
+    ( format.nil? || format.empty? ) ? 'YMD' : analyze_format_string(format.upcase)
+  end
+
+  def analyze_format_string(format)
+    DATE_FORMAT.include?(format) ? format : nil
   end
 
   def has_correct_structure?(regex)
