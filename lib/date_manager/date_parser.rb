@@ -1,9 +1,9 @@
 class DateParser
   # Valid date formats by country - based on https://en.wikipedia.org/wiki/Date_format_by_country#Listing
   # Dates formats
-  # MDY -> mm/dd/yyyy  Date.strptime("6/15/2012", '%m/%d/%Y') - ^\d{2}(-|.|\/)\d{2}(-|.|\/)\d{4}$
-  # DMY -> dd/mm/yyyy  Date.strptime("15/6/2012", '%d/%m/%Y') - ^\d{2}(-|.|\/)\d{2}(-|.|\/)\d{4}$
-  # YMD -> yyyy/mm/dd  Date.strptime("2012/6/15", '%Y/%m/%d') - ^\d{4}(-|.|\/)\d{2}(-|.|\/)\d{2}$ with seconds '^\d{4}(-|.|\/)\d{2}(-|.|\/)\d{2} \d{2}:\d{2}:\d{2}$/', '2008-09-01 12:35:45'
+  # MDY -> mm/dd/yyyy  DateTime.parse("6/15/2012", '%m/%d/%Y') - ^\d{2}(-|.|\/)\d{2}(-|.|\/)\d{4}$
+  # DMY -> dd/mm/yyyy  DateTime.parse("15/6/2012", '%d/%m/%Y') - ^\d{2}(-|.|\/)\d{2}(-|.|\/)\d{4}$
+  # YMD -> yyyy/mm/dd  DateTime.parse("2012/6/15", '%Y/%m/%d') - ^\d{4}(-|.|\/)\d{2}(-|.|\/)\d{2}$ with seconds '^\d{4}(-|.|\/)\d{2}(-|.|\/)\d{2} \d{2}:\d{2}:\d{2}$/', '2008-09-01 12:35:45'
   # DateParser.new('02/02/2012','02/02/2013', 'DMY')
   attr_accessor :start_date, :finish_date, :format
 
@@ -67,7 +67,10 @@ class DateParser
   end
 
   def clean_date_separator
-    # TODO
+    @start_date.gsub!('.', '/') if @start_date.include?('.')
+    @start_date.gsub!('-', '/') if @start_date.include?('-')
+    @finish_date.gsub!('.', '/') if @finish_date.include?('.')
+    @finish_date.gsub!('-', '/') if @finish_date.include?('-')
   end
 
   def date_format_structure
@@ -84,7 +87,7 @@ class DateParser
 
   def convert_to_date_object(structure)
     # Returns two Date objects
-    [ Date.strptime(@start_date, structure), Date.strptime(@finish_date, structure) ]
+    [ DateTime.parse(@start_date, structure), DateTime.parse(@finish_date, structure) ]
   end
 
 end
