@@ -1,6 +1,9 @@
 # DateManager
 
-TODO: Write a gem description
+Parse, validate, manipulate, and display dates.
+
+Work in progress, This gem is not finalized yet.
+
 
 ## Installation
 
