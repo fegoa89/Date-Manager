@@ -126,9 +126,17 @@ describe DateParser do
     end
   end
 
-  context 'when the component separator is not "." "/"" or "-" ' do
-  end
   context 'when the format of the dates does not belong to the structured format' do
+    dmy_cases = [ { first_date: '01/03/2015', second_date: '02/03/2015' , format: 'YMD', date_structure: '%d/%m/%Y' },
+                  { first_date: '31.03.2015', second_date: '31.12.2015' , format: ''   , date_structure: '%d/%m/%Y' },
+                  { first_date: '2012-03-02', second_date: '2012-03-04' , format: 'DMY', date_structure: '%d/%m/%Y' } ]
+
+    dmy_cases.each do |dmy|
+      it 'returns an ArgumentError - invalid date' do
+        expect( DateParser.new( dmy[:first_date], dmy[:second_date], dmy[:format]).parse ).to be_nil
+      end
+    end
+
   end
 
   end

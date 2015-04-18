@@ -67,8 +67,8 @@ class DateParser
   end
 
   def clean_date_separator
-    @start_date.gsub!('.', '/') if @start_date.include?('.')
-    @start_date.gsub!('-', '/') if @start_date.include?('-')
+    @start_date.gsub!('.', '/')  if @start_date.include?('.')
+    @start_date.gsub!('-', '/')  if @start_date.include?('-')
     @finish_date.gsub!('.', '/') if @finish_date.include?('.')
     @finish_date.gsub!('-', '/') if @finish_date.include?('-')
   end
