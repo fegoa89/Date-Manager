@@ -35,7 +35,7 @@ class DateParser
   end
 
   def analyze_format_string(format)
-    DATE_FORMAT.include?(format) ? format : nil
+    DATE_FORMAT.include?(format.upcase) ? format : nil
   end
 
   def has_correct_structure?(regex)
