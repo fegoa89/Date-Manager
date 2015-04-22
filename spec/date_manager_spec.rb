@@ -105,4 +105,48 @@ describe DateManager do
 
   end
 
+  describe '#days_between_dates' do
+
+    context 'with start date "01/02/2015" and finish date 01/03/2015' do
+      it 'the result is 28' do
+        expect( DateManager.new( '01/02/2015', '01/03/2015', 'DMY' ).days_between_dates ).to eq(28)
+      end
+    end
+
+    context 'without a valid date range' do
+      it 'the result is nil' do
+        expect( DateManager.new( '02/03/2015', '01/03/2015', 'DMY' ).days_between_dates ).to eq(nil)
+      end
+    end
+
+  end
+
+  describe '#months_between_dates' do
+
+    context 'with start date "01/02/2015" and finish date 01/03/2015' do
+      it 'the result is 1' do
+        expect( DateManager.new( '01/02/2015', '01/03/2015', 'DMY' ).months_between_dates ).to eq(1)
+      end
+    end
+
+    context 'with start date "01/02/2015" and finish date 02/02/2015' do
+      it 'the result is 0' do
+        expect( DateManager.new( '01/02/2015', '02/02/2015', 'DMY' ).months_between_dates ).to eq(0)
+      end
+    end
+
+    context 'with start date "01/01/2015" and finish date 02/12/2015' do
+      it 'the result is 12' do
+        expect( DateManager.new( '01/12/2014', '02/12/2015', 'DMY' ).months_between_dates ).to eq(12)
+      end
+    end
+
+    context 'without a valid date range' do
+      it 'the result is nil' do
+        expect( DateManager.new( '02/03/2015', '01/03/2015', 'DMY' ).months_between_dates ).to eq(nil)
+      end
+    end
+
+  end
+
 end
