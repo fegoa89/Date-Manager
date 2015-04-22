@@ -66,6 +66,7 @@ describe DateManager do
       end
 
     end
+
     context 'and the format dates are not YMD' do
       cases = [ { first_date: '01/02/2015', second_date: '01/03/2015' , date_structure: '%m/%d/%Y' },
                 { first_date: '01.02.2015', second_date: '01.03.2015' , date_structure: '%m/%d/%Y' },
