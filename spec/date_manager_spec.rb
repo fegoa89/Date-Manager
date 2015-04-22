@@ -44,6 +44,7 @@ describe DateManager do
       ymd_cases = [ { first_date: '2012/02/02', second_date: '2012/02/03', date_structure: '%Y/%m/%d' },
                     { first_date: '2012.02.02', second_date: '2012.02.03', date_structure: '%Y/%m/%d' },
                     { first_date: '2012-02-02', second_date: '2012-02-03', date_structure: '%Y/%m/%d' } ]
+
       context 'and the format dates have YMD format' do
         ymd_cases.each do |example|
 
@@ -60,11 +61,12 @@ describe DateManager do
           it 'sets format to YMD' do
             expect( subject.format ).to eq( 'YMD' )
           end
+
         end
       end
 
     end
-    context 'and the format dates have YMD' do
+    context 'and the format dates are not YMD' do
       cases = [ { first_date: '01/02/2015', second_date: '01/03/2015' , date_structure: '%m/%d/%Y' },
                 { first_date: '01.02.2015', second_date: '01.03.2015' , date_structure: '%m/%d/%Y' },
                 { first_date: '01-02-2015', second_date: '01-03-2015' , date_structure: '%m/%d/%Y' },
@@ -77,9 +79,10 @@ describe DateManager do
         subject { DateManager.new( ymd[:first_date], ymd[:second_date] ) }
 
         it 'does not allow to set an object when no format is given and the date format is not YMD' do
-          expect( subject.start_date ).to eq( nil )
+          expect( subject.start_date ).to  eq( nil )
           expect( subject.finish_date ).to eq( nil )
         end
+
       end
     end
 
