@@ -87,6 +87,22 @@ describe DateManager do
       end
     end
 
+  end
+
+  describe '#valid_date_range?' do
+
+    context 'when the first date is smaller than the second date' do
+      it 'the result is true' do
+        expect( DateManager.new( '01/02/2015', '01/03/2015', 'DMY' ).valid_date_range? ).to be true
+      end
+    end
+
+    context 'when the first date is bigger than the second date' do
+      it 'the result is true' do
+        expect( DateManager.new( '02/03/2015', '01/03/2015', 'DMY' ).valid_date_range? ).to be false
+      end
+    end
 
   end
+
 end
