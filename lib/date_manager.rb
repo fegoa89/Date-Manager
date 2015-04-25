@@ -1,6 +1,7 @@
 require 'date'
 require 'date_manager/version'
 require 'date_manager/date_parser'
+require 'date_manager/human_readable_parser'
 
 class DateManager
 
@@ -47,6 +48,12 @@ class DateManager
   def differences_between_dates
     # Returns a hash that includes the quantity of years, months and days between
     { years: years_between_dates, months: months_between_dates, days: days_between_dates }
+  end
+
+  def human_readable_format
+    # returns a string with start_date and finish_date object in a human readable way
+    # "Date range between #{@start_date.strftime("%B %d, %Y %A")} and #{@finish_date.strftime("%B %d, %Y %A")}"
+    HumanReadableParser.to_human_readable_date(@start_date, @finish_date)
   end
 
   private
