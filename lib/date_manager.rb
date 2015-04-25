@@ -12,6 +12,7 @@ class DateManager
   end
 
   def valid_date_range?
+    # Compares if the start_date is lower than finish_date
     @start_date < @finish_date
   end
 
@@ -25,6 +26,17 @@ class DateManager
     if valid_date_range?
       (@finish_date.year * 12 + @finish_date.month) - (@start_date.year * 12 + @start_date.month)
     end
+  end
+
+  def years_between_dates
+    if valid_date_range?
+      @finish_date.year - @start_date.year
+    end
+  end
+
+  def differences_between_dates
+    # Returns a hash that includes the quantity of years, months and days between
+    { years: years_between_dates, months: months_between_dates, days: days_between_dates }
   end
 
   private

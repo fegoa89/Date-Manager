@@ -135,7 +135,7 @@ describe DateManager do
       end
     end
 
-    context 'with start date "01/01/2015" and finish date 02/12/2015' do
+    context 'with start date "01/12/2014" and finish date 02/12/2015' do
       it 'the result is 12' do
         expect( DateManager.new( '01/12/2014', '02/12/2015', 'DMY' ).months_between_dates ).to eq(12)
       end
@@ -148,5 +148,38 @@ describe DateManager do
     end
 
   end
+
+  describe '#years_between_dates' do
+
+    context 'with start date "01/02/2015" and finish date 01/03/2015' do
+      it 'the result is 0' do
+        expect( DateManager.new( '01/02/2015', '01/03/2015', 'DMY' ).years_between_dates ).to eq(0)
+      end
+    end
+
+    context 'with start date "01/12/2014" and finish date 02/12/2015' do
+      it 'the result is 1' do
+        expect( DateManager.new( '01/12/2014', '02/12/2015', 'DMY' ).years_between_dates ).to eq(1)
+      end
+    end
+
+  end
+
+  describe '#differences_between_dates' do
+
+    context 'with start date "01/02/2015" and finish date 01/03/2015' do
+      it 'returns an array like {years: 0, months: 1, days: 28}' do
+        expect( DateManager.new( '01/02/2015', '01/03/2015', 'DMY' ).differences_between_dates ).to eq({years: 0, months: 1, days: 28})
+      end
+    end
+
+    context 'with start date "01/12/2014" and finish date 02/12/2015' do
+      it 'returns an array like {years: 1, months: 12, days: 366}' do
+        expect( DateManager.new( '01/12/2014', '02/12/2015', 'DMY' ).differences_between_dates ).to eq({years: 1, months: 12, days: 366})
+      end
+    end
+
+  end
+
 
 end
