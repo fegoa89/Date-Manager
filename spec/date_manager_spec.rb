@@ -181,5 +181,28 @@ describe DateManager do
 
   end
 
+  describe '#start_date_leap_year?' do
+    context 'with start date "01/12/2016" and finish date 02/12/2020' do
+      it 'returns true - 2016 is a leap year' do
+        expect( DateManager.new( '01/12/2016', '02/12/2020', 'DMY' ).start_date_leap_year? ).to be true
+      end
+
+      it 'returns false - 2015 is not a leap year' do
+        expect( DateManager.new( '01/12/2015', '02/12/2020', 'DMY' ).start_date_leap_year? ).to be false
+      end
+    end
+  end
+
+  describe '#start_date_leap_year?' do
+    context 'with start date "01/12/2016" and finish date 02/12/2020' do
+      it 'returns true - 2020 is a leap year' do
+        expect( DateManager.new( '01/12/2015', '02/12/2020', 'DMY' ).finish_date_leap_year? ).to be true
+      end
+
+      it 'returns false - 2015 is not a leap year' do
+        expect( DateManager.new( '01/12/2015', '02/12/2015', 'DMY' ).finish_date_leap_year? ).to be false
+      end
+    end
+  end
 
 end

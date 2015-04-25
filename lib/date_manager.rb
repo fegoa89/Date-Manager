@@ -34,6 +34,16 @@ class DateManager
     end
   end
 
+  def start_date_leap_year?
+    # Determines if a year is a leap year
+    Date.leap?( @start_date.year )
+  end
+
+  def finish_date_leap_year?
+    # Determines if a year is a leap year
+    Date.leap?( @finish_date.year )
+  end
+
   def differences_between_dates
     # Returns a hash that includes the quantity of years, months and days between
     { years: years_between_dates, months: months_between_dates, days: days_between_dates }
