@@ -1,4 +1,5 @@
 require 'date'
+require 'yaml'
 require 'date_manager/version'
 require 'date_manager/date_parser'
 require 'date_manager/human_readable_parser'
@@ -50,16 +51,23 @@ class DateManager
     { years: years_between_dates, months: months_between_dates, days: days_between_dates }
   end
 
-  def human_readable_format
+  def readable_days_between_dates(language = {})
+    # returns a string with the quantity of days between dates
+    if valid_date_range?
+      HumanReadableParser.days_between_dates( days_between_dates, language)
+    end
+  end
+
+
+  def human_readable_format(language = {})
     # returns a string with start_date and finish_date object in a human readable way
-    # "Date range between #{@start_date.strftime("%B %d, %Y %A")} and #{@finish_date.strftime("%B %d, %Y %A")}"
-    HumanReadableParser.to_human_readable_date(@start_date, @finish_date)
+    HumanReadableParser.to_human_readable_date(@start_date, @finish_date, language)
   end
 
   private
 
-  def initialize_date_parser(start_date, finish_date, format)
-    DateParser.new(start_date, finish_date, format)
-  end
+    def initialize_date_parser(start_date, finish_date, format)
+      DateParser.new(start_date, finish_date, format)
+    end
 
 end

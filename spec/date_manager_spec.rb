@@ -208,8 +208,17 @@ describe DateManager do
   describe '#human_readable_format' do
     context 'with start date "01/12/2016" and finish date 02/12/2020' do
       it 'returns -> "Date range between February 02, 2012 Thursday and February 03, 2012 Friday" ' do
-        expected_string = "Date range between February 02, 2012 Thursday and February 03, 2012 Friday"
+        expected_string = "First date : February 02, 2012 Thursday - Second date : February 03, 2012 Friday"
         expect( DateManager.new( '2012/02/02', '2012/02/03' ).human_readable_format ).to eq(expected_string)
+      end
+    end
+  end
+
+  describe '#readable_days_between_dates' do
+    context 'with start date "2012/02/02" and finish date 2012/02/03' do
+      it 'returns -> "2 days" ' do
+        expected_string = "2 days"
+        expect( DateManager.new( '2012/02/01', '2012/02/03' ).readable_days_between_dates ).to eq(expected_string)
       end
     end
   end
