@@ -223,4 +223,25 @@ describe DateManager do
     end
   end
 
+  describe '#working_days' do
+    context 'with start date "2015/02/01" and finish date 2015/02/03' do
+      it 'returns 2 - First date is sunday and second tuesday' do
+        expect( DateManager.new( '2015/02/01', '2015/02/03' ).working_days ).to eq(2)
+      end
+    end
+
+    context 'with start date "2015/02/02" and finish date 2015/02/16' do
+      it 'returns 11 - First date is monday and second monday two weeks after' do
+        expect( DateManager.new( '2015/02/02', '2015/02/16' ).working_days ).to eq(11)
+      end
+    end
+
+    context 'with start date "2015/02/04" and finish date 2015/02/05' do
+      it 'returns 0 - First date is saturday and second sunday' do
+        expect( DateManager.new( '2015/04/04', '2015/04/05' ).working_days ).to eq(0)
+      end
+    end
+
+  end
+
 end

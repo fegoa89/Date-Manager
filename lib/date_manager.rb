@@ -58,10 +58,13 @@ class DateManager
     end
   end
 
-
   def human_readable_format(language = {})
     # returns a string with start_date and finish_date object in a human readable way
     HumanReadableParser.to_human_readable_date(@start_date, @finish_date, language)
+  end
+
+  def working_days
+    (@start_date..@finish_date).select{ |day| (1..5).include?(day.wday) }.length
   end
 
   private
