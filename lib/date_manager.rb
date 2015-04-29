@@ -64,7 +64,13 @@ class DateManager
   end
 
   def working_days
+    # Return quantity of working days
     (@start_date..@finish_date).select{ |day| (1..5).include?(day.wday) }.length
+  end
+
+  def total_weekend_days
+    # Return quantity of weekend days
+    (@start_date..@finish_date).select{ |day| [0, 6].include?(day.wday) }.length
   end
 
   private
