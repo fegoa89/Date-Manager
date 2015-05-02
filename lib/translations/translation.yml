@@ -1,3 +1,7 @@
 en:
   long_readable_format:  'First date : %{first_date} - Second date : %{last_date}'
   days_between_dates:    '%{total_days} days'
+
+es:
+  long_readable_format:  'Primera Fecha : %{first_date} - Segunda Fecha : %{last_date}'
+  days_between_dates:    '%{total_days} dias'
