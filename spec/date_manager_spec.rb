@@ -123,27 +123,17 @@ describe DateManager do
 
   describe '#months_between_dates' do
 
-    context 'with start date "01/02/2015" and finish date 01/03/2015' do
-      it 'the result is 1' do
-        expect( DateManager.new( '01/02/2015', '01/03/2015', 'DMY' ).months_between_dates ).to eq(1)
-      end
-    end
+    cases = [ { first_date: '01/02/2015', second_date: '01/03/2015' , expected_result: 1 },
+              { first_date: '01/02/2015', second_date: '02/02/2015' , expected_result: 0 },
+              { first_date: '01/12/2014', second_date: '02/12/2015' , expected_result: 12 },
+              { first_date: '02/03/2015', second_date: '01/03/2015' , expected_result: nil },
+              { first_date: '01/02/2015', second_date: '01/02/2015' , expected_result: nil } ]
 
-    context 'with start date "01/02/2015" and finish date 02/02/2015' do
-      it 'the result is 0' do
-        expect( DateManager.new( '01/02/2015', '02/02/2015', 'DMY' ).months_between_dates ).to eq(0)
-      end
-    end
-
-    context 'with start date "01/12/2014" and finish date 02/12/2015' do
-      it 'the result is 12' do
-        expect( DateManager.new( '01/12/2014', '02/12/2015', 'DMY' ).months_between_dates ).to eq(12)
-      end
-    end
-
-    context 'without a valid date range' do
-      it 'the result is nil' do
-        expect( DateManager.new( '02/03/2015', '01/03/2015', 'DMY' ).months_between_dates ).to eq(nil)
+    context 'based on the above inputs' do
+      cases.each do |ymd|
+        it 'the result is #{ymd[:expected_result]}' do
+          expect( DateManager.new( ymd[:first_date], ymd[:second_date], 'DMY' ).months_between_dates ).to eq(ymd[:expected_result])
+        end
       end
     end
 
@@ -151,15 +141,17 @@ describe DateManager do
 
   describe '#years_between_dates' do
 
-    context 'with start date "01/02/2015" and finish date 01/03/2015' do
-      it 'the result is 0' do
-        expect( DateManager.new( '01/02/2015', '01/03/2015', 'DMY' ).years_between_dates ).to eq(0)
-      end
-    end
+    cases = [ { first_date: '01/02/2015', second_date: '01/03/2015' , expected_result: 0 },
+              { first_date: '01/02/2015', second_date: '02/02/2015' , expected_result: 0 },
+              { first_date: '01/12/2014', second_date: '02/12/2015' , expected_result: 1 },
+              { first_date: '02/03/2015', second_date: '01/03/2015' , expected_result: nil },
+              { first_date: '01/02/2015', second_date: '01/02/2015' , expected_result: nil } ]
 
-    context 'with start date "01/12/2014" and finish date 02/12/2015' do
-      it 'the result is 1' do
-        expect( DateManager.new( '01/12/2014', '02/12/2015', 'DMY' ).years_between_dates ).to eq(1)
+    context 'based on the above inputs' do
+      cases.each do |ymd|
+        it 'the result is #{ymd[:expected_result]}' do
+          expect( DateManager.new( ymd[:first_date], ymd[:second_date], 'DMY' ).years_between_dates ).to eq(ymd[:expected_result])
+        end
       end
     end
 
