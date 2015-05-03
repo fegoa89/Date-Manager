@@ -21,4 +21,13 @@ describe HumanReadableParser do
       end
     end
   end
+
+  describe '.months_between_dates' do
+    context "giving two DateTime object" do
+      it "should return an human readable string containing the months in between" do
+        expected_string = "0 months"
+        expect(HumanReadableParser.months_between_dates(subject.months_between_dates)).to eq(expected_string)
+      end
+    end
+  end
 end

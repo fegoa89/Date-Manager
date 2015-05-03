@@ -8,6 +8,10 @@ class HumanReadableParser
     load_translation(language)["days_between_dates"] % { total_days: days }
   end
 
+  def self.months_between_dates(months, language = {})
+    load_translation(language)["months_between_dates"] % { total_months: months }
+  end
+
   private
 
     def self.load_translation(language)

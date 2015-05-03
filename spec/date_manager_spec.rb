@@ -215,6 +215,15 @@ describe DateManager do
     end
   end
 
+  describe '#readable_months_between_dates' do
+    context 'with start date "2012/02/02" and finish date 2012/02/03' do
+      it 'returns -> "0 months" ' do
+        expected_string = "0 months"
+        expect( DateManager.new( '2012/02/01', '2012/02/03' ).readable_months_between_dates ).to eq(expected_string)
+      end
+    end
+  end
+
   describe '#working_days' do
     context 'with start date "2015/02/01" and finish date 2015/02/03' do
       it 'returns 2 - First date is sunday and second tuesday' do

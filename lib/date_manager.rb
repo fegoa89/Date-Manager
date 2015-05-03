@@ -63,6 +63,11 @@ class DateManager
     HumanReadableParser.to_human_readable_date(@start_date, @finish_date, language)
   end
 
+  def readable_months_between_dates(language = {})
+    # returns a string with the quantity of months between dates
+    HumanReadableParser.months_between_dates(months_between_dates, language)
+  end
+
   def working_days
     # Return quantity of working days
     (@start_date..@finish_date).select{ |day| (1..5).include?(day.wday) }.length
