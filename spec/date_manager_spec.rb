@@ -246,14 +246,19 @@ describe DateManager do
   end
 
   describe '#total_weekend_days' do
-    context 'with start date "2015/02/01" and finish date 2015/02/03' do
-      it 'returns 1 - 1st February 2015 is sunday - 5th February is Thursday' do
-        expect( DateManager.new( '2015/02/01', '2015/02/03' ).total_weekend_days ).to eq(1)
-      end
 
-      it 'returns 4 - 2 weekends between these dates' do
-        expect( DateManager.new( '2015/01/30', '2015/02/13' ).total_weekend_days ).to eq(4)
+    cases = [ { first_date: '2015/02/02', second_date: '2015/02/05' , expected_result: 0 },
+              { first_date: '2015/02/01', second_date: '2015/02/03' , expected_result: 1 },
+              { first_date: '2015/01/30', second_date: '2015/02/13' , expected_result: 4 },
+              { first_date: '2015/01/30', second_date: '2015/02/20' , expected_result: 6 }]
+
+    context 'context based on the above inputs' do
+      cases.each do |ymd|
+        it 'the result is #{ymd[:expected_result]}' do
+          expect( DateManager.new( ymd[:first_date], ymd[:second_date] ).total_weekend_days ).to eq(ymd[:expected_result])
+        end
       end
     end
+
   end
 end
