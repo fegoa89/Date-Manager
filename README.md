@@ -1,4 +1,4 @@
-/# DateManager
+# DateManager
 
 > Work in progress, This gem is not finalized yet.
 
@@ -9,9 +9,9 @@ Parse, validate, manipulate, and display dates.
 DateManager is a gem for convert/parse/compare two strings into date a DateTime object and manipulate them .
 For handle different dates format, I did this gem based on the most used formats in different countries (https://en.wikipedia.org/wiki/Date_format_by_country#Listing), from where I can divide it in three basic types :
 
-MDY - Month/Day/Year mm/dd/yyyy
-DMY - Day/Month/Year dd/mm/yyyy
-YMD - Year/Month/Day yyyy/mm/dd
+- MDY - Month/Day/Year mm/dd/yyyy
+- DMY - Day/Month/Year dd/mm/yyyy
+- YMD - Year/Month/Day yyyy/mm/dd
 
 # Using DateManager
 
