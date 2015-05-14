@@ -108,6 +108,7 @@ Gives back the quantity of years between these dates
 ## differences_between_dates
 
 Returns a hash containing the quantity of years / months / days between the dates
+
     $ @dates = DateManager.new('03/03/2014', '03/03/2016', 'DMY')
     $ @dates.differences_between_dates
     $ {:years=>2, :months=>24, :days=>731}
@@ -115,6 +116,7 @@ Returns a hash containing the quantity of years / months / days between the date
 ## readable_days_between_dates(language = {})
 
 Returns a string with quantity of days in between. Only Spanish and English are supported.
+
     $ @dates = DateManager.new('02/02/2015', '03/03/2015', 'DMY')
     $ @dates.readable_days_between_dates
     $ 29 days
@@ -122,6 +124,7 @@ Returns a string with quantity of days in between. Only Spanish and English are 
 ## readable_months_between_dates(language = {})
 
 Returns a string with the quantity of months in between. Only Spanish and English are supported.
+
     $ @dates = DateManager.new('02/02/2015', '03/04/2015', 'DMY')
     $ @dates.readable_months_between_dates
     $ 2 months
@@ -137,6 +140,7 @@ Returns a string with start_date and finish_date object in a human readable way 
 ## working_days
 
 Return quantity of working days between dates
+
     $ @dates = DateManager.new('2012/02/01', '2012/02/03')
     $ @dates.working_days
     $ 3
