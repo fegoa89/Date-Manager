@@ -1,3 +1,4 @@
+[![Build Status](https://semaphoreci.com/api/v1/projects/c1127eeb-9c13-44dd-baeb-155ce4a54493/425379/badge.svg)](https://semaphoreci.com/fegoa89/date-manager)
 # DateManager
 
 Parse, validate, manipulate, and display dates.
