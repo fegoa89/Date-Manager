@@ -17,9 +17,9 @@ class HumanReadableParser
     def self.load_translation(language)
       # Loads translation.yml
       if not language.empty?
-        YAML.load_file("lib/translations/translation.yml")[language]
+        @file ||= YAML.load_file("lib/translations/translation.yml")[language]
       else
-        YAML.load_file("lib/translations/translation.yml")['en']
+        @sfile ||= YAML.load_file("lib/translations/translation.yml")['en']
       end
     end
 
