@@ -86,7 +86,7 @@ Gives back the quantity of months between these dates
 Gives back the quantity of years between these dates
 
     $ @dates = DateManager.new('03/03/2014', '03/03/2015', 'DMY')
-    $ @dates.years_bwtween_dates
+    $ @dates.years_between_dates
     $ 1
 
 ## start_date_leap_year?
@@ -168,9 +168,6 @@ Or install it yourself as:
 
     $ gem install date_manager
 
-# Usage
-
-TODO: Write usage instructions here
 
 # Contributing
 

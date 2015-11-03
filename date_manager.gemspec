@@ -7,7 +7,7 @@ Gem::Specification.new do |spec|
   spec.version = DateManager::VERSION
   spec.authors = ["Fernando"]
   spec.email = ["fgonzalezaguilera@gmail.com"]
-  spec.description = %q{}
+  spec.description = %q{Parse, validate, manipulate, and display dates.}
   spec.summary = %q{}
   spec.homepage = ""
   spec.license = "MIT"
