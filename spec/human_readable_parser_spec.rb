@@ -7,7 +7,7 @@ describe HumanReadableParser do
   describe '.to_human_readable_date' do
     context "giving two DateTime object" do
       it "should return an human readable string containing date, month and year" do
-        expected_string = "First date : February 01, 2012 Wednesday - Second date : February 03, 2012 Friday"
+        expected_string = "First date : Wednesday, 1st of February 2012 - Second date : Friday, 3rd of February 2012"
         expect(HumanReadableParser.to_human_readable_date(subject.start_date, subject.finish_date)).to eq(expected_string)
       end
     end

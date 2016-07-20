@@ -132,11 +132,11 @@ Returns a string with the quantity of months in between. Only Spanish and Englis
 
 ## human_readable_format
 
-Returns a string with start_date and finish_date object in a human readable way . Only Spanish and English are supported.
+Returns a string with start_date and finish_date object in a human readable way that contains the day in a ordinal format. Only Spanish and English are supported.
 
     $ @dates = DateManager.new('2012/02/01', '2012/02/03')
     $ @dates.human_readable_format
-    $ "First date : February 01, 2012 Wednesday - Second date : February 03, 2012 Friday"
+    $ "First date : Wednesday, 1st of February 2012 - Second date : Friday, 3rd of February 2012"
 
 ## working_days
 
